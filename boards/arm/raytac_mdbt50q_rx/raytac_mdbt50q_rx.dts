@@ -75,6 +75,13 @@
  *
  * You can compare this to the seeeduino_xiao_ble.dts they are very similar
  */
+
+zephyr_udc0: &usbd {
+    compatible = "nordic,nrf-usbd";
+    status = "okay";
+};
+
+
 &flash0 {
 	partitions {
 		compatible = "fixed-partitions";
