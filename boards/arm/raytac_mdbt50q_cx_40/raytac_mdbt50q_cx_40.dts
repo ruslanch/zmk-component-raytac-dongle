@@ -21,15 +21,15 @@
     leds {
         compatible = "gpio-leds";
         led0: led_0 {
-            gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+            gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
             label = "Blue LED";
         };
     };
 
     buttons {
         compatible = "gpio-keys";
-            gpios = <&gpio1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         button0: button_0 {
+            gpios = <&gpio1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
             label = "Push button switch";
             zephyr,code = <INPUT_KEY_0>;
         };
@@ -39,6 +39,16 @@
         sw0 = &button0;
     };
 };
+
+/*
+&reg0 {
+    status = "okay";
+};
+
+&reg1 {
+    regulator-initial-mode = <NRF5X_REG_MODE_DCDC>;
+};
+*/
 
 &adc {
     status = "okay";
