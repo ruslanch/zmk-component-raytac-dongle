@@ -1,15 +1,7 @@
 /*
- * You probably need to update the old UF2 bootloader that comes with the dongle
- * to a more recent one.
- *
- * I used these instructions:
- * https://learn.adafruit.com/introducing-the-adafruit-nrf52840-feather/update-bootloader-use-uf2
- *
- * And I used this bootloader 0.9.2:
- * https://github.com/adafruit/Adafruit_nRF52_Bootloader/releases/tag/0.9.2
- *
- * Specifically this one:
- * https://github.com/adafruit/Adafruit_nRF52_Bootloader/releases/download/0.9.2/update-raytac_mdbt50q_rx_bootloader-0.9.2_nosd.uf2
+ * You need to update the bootloader that comes with the dongle
+ * to an UF2-enabled one, like:
+ * https://github.com/adafruit/Adafruit_nRF52_Bootloader/
  */
 
 /dts-v1/;
@@ -17,7 +9,7 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
 / {
-    model = "Raytac MDBT50Q-RX";
+    model = "Raytac MDBT50Q-CX-40";
 
     chosen {
         zephyr,code-partition = &code_partition;
@@ -29,7 +21,7 @@
     leds {
         compatible = "gpio-leds";
         led0: led_0 {
-            gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
+            gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
             label = "Blue LED";
         };
     };
@@ -37,7 +29,7 @@
     buttons {
         compatible = "gpio-keys";
         button0: button_0 {
-            gpios = <&gpio0 15 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            gpios = <&gpio1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
             label = "Push button switch";
             zephyr,code = <INPUT_KEY_0>;
         };
@@ -45,6 +37,7 @@
 
     aliases {
         sw0 = &button0;
+        zephyr_udc0 = &usbd;
     };
 };
 

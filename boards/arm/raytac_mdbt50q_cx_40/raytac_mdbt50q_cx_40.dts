@@ -37,21 +37,9 @@
 
     aliases {
         sw0 = &button0;
+        zephyr_udc0 = &usbd;
     };
-    
 };
-
-};
-
-/*
-&reg0 {
-    status = "okay";
-};
-
-&reg1 {
-    regulator-initial-mode = <NRF5X_REG_MODE_DCDC>;
-};
-*/
 
 &adc {
     status = "okay";
@@ -74,11 +62,6 @@
     cdc_acm_uart: cdc_acm_uart {
         compatible = "zephyr,cdc-acm-uart";
     };
-};
-
-zephyr_udc0: &usbd {
-	compatible = "nordic,nrf-usbd";
-	status = "okay";
 };
 
 /* Taken from the adafruit_itsybitsy_nrf52840.dts in Zephyr.
