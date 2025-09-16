@@ -64,11 +64,6 @@
     };
 };
 
-zephyr_udc0: &usbd {
-    compatible = "nordic,nrf-usbd";
-    status = "okay";
-};
-
 /* Taken from the adafruit_itsybitsy_nrf52840.dts in Zephyr.
  *
  * You can compare this to the seeeduino_xiao_ble.dts they are very similar
